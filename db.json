@@ -1,0 +1,17 @@
+{
+  "user": [
+    {
+      "id": "d121",
+      "Department": "Software",
+      "Name": "faaiz",
+      "Gender": "",
+      "Mobile": "21",
+      "Email": "usamaalam1999@gmail.com",
+      "Doj": "2024-07-31",
+      "City": "karachi",
+      "Salary": 99,
+      "Address": "surjani town sec 6/b",
+      "Status": true
+    }
+  ]
+}

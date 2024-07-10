@@ -1,0 +1,128 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header bg">
+                    <div class="row">
+                        <div class="col-6 text-white">Users list</div>
+                        <div class="col-6"><button>Add user</button></div>
+                    </div>
+    
+                </div>
+            <div class="card-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Department</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Mobile</th>
+                            <th>Email</th>
+                            <th>Doj</th>
+                            <th>City</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of usersList; track $index) {
+                            <tr>
+                               <td>{{item.Department}}</td>
+                               <td>{{item.Name}}</td>
+                               <td>{{item.Email}}</td>
+                               <td>{{item.Mobile}}</td>
+                               <td>{{item.Salary}}</td>
+                               <td>{{item.Doj}}</td>
+                               <td>{{item.Address}}</td>
+                               <td class="text-center">
+                                   <fa-icon [icon]="EditButton" (click)="onEdit(item)"></fa-icon>
+                                   <fa-icon [icon]="DeleteButton" (click)="onDelete(item.id)"></fa-icon>
+                                  
+                               </td>
+                            </tr>
+
+                        }
+
+                        
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header bg">
+                    <div class="row">
+                        <div class="col-6 text-white">Users list</div>
+                        <div class="col-6"><button>{{editMode}}</button></div>
+                    </div>
+    
+                </div>
+            <div class="card-body">
+                <form class="row" #usengFrom="ngForm" (ngSubmit)="onSubmit(usengFrom)">
+                    <div class="col-6">
+                        <select class="from-select" name="Department" required [(ngModel)]="user.Department">
+                            <option value="">Select Department</option>
+                            @for (item of departmentList; track $index) {
+                                
+                                <option value={{item}}>{{item}}</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" name="Name" [(ngModel)]="user.Name"  placeholder="name" required  id="" value="">
+                    </div>
+                    <div class="col-6">
+                        <input type="text" [(ngModel)]="user.Email"  name="Email" placeholder="Email" id=""  required value="">
+                    </div>
+                    <div class="col-6">
+                        <input type="text" [(ngModel)]="user.Mobile"  name="Mobile" placeholder="Mobile" id=""  required value="">
+                    </div>
+                    <div class="col-6">
+                        <input type="date" [(ngModel)]="user.Doj"  name="Doj" placeholder="Doj" id=""  required value="">
+                    </div>
+                    <div class="col-6">
+                        <div>
+                            <input type="radio" [(ngModel)]="user.Gender"  name="Gender" value="male" placeholder="Gender" id=""  required value="">
+                            <label>male?</label>
+                        </div>
+                        <div>
+                            <input type="radio" [(ngModel)]="user.Gender"  name="Gender" value="female" placeholder="Gender" id=""  required value="">
+                            <label>female?</label>
+                        </div>
+                        <div>
+                            <input type="number" [(ngModel)]="user.Salary"  name="Salary" value="" placeholder="Salary" id=""  required value="">
+                            <label>female?</label>
+                        </div>
+                    </div>
+                     <div class="col-6">
+                        <select class="from-select" name="city" required [(ngModel)]="user.City" >
+                            <option value="">Select city</option>
+                            @for (item of cityList; track $index) {
+                                
+                                <option value={{item}}>{{item}}</option>
+                            }
+                        </select>
+                    </div>
+                   
+                    <div class="col-12">
+                        <textarea cols="19" [value]="user.Address" rows="3" [(ngModel)]="user.Address"  name="Address" placeholder="Address"></textarea>
+                    </div>
+                    <div class="col-6">
+                        <input type="checkbox"  [(ngModel)]="user.Status"  name="Status" placeholder="Status" id=""  required value="">
+                        <label>{{user.Address}}</label>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit">Save</button>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" (click)="onResetForm(usengFrom)">reset</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
